@@ -7,15 +7,16 @@ export const getUserByName = async (
     req: Request,
     res: Response
 ): Promise<void> => {
-    const { name } = req.body
+    const { name, password } = req.body
     try {
-        const user = await prisma.employee.findFirst({
+        const user = await prisma.user.findFirst({
             where: {
-                name
+                name,
+                password
             }
         });
         if (!user) {
-            res.status(404).json({ message: `пользователя с именем ${name} не существует` })
+            res.status(404).json({ message: `пользователя с именем ${name} не существует, либо не верный пароль` })
         }
         res.json(user)
     } catch (error: any) {
