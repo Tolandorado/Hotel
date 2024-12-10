@@ -13,61 +13,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Guest {
+model user {
+  id       Int    @id @default(autoincrement())
+  name     String @unique
+  password String
+  role     String
+}
+
+model guest {
   id      Int       @id @default(autoincrement())
   name    String
   phone   String
   email   String
-  booking Booking[]
+  booking booking[]
 }
 
-model Employee {
+model employee {
   id       Int        @id @default(autoincrement())
   name     String
   position String
   email    String
   phone    String
-  Cleaning Cleaning[]
+  cleaning cleaning[]
 }
 
-model Room {
+model room {
   id       Int        @id @default(autoincrement())
-  roomType String
-  status   String
-  price    Int
-  booking  Booking[]
-  Cleaning Cleaning[]
+  floor    String
+  number   Int
+  category String
+  booking  booking[]
+  cleaning cleaning[]
 }
 
-model Booking {
+model booking {
   id           Int       @id @default(autoincrement())
   guestId      Int
   roomId       Int
   checkInDate  DateTime
   checkOutDate DateTime
   status       String
-  payment      Payment[]
+  payment      payment[]
 
-  guest Guest @relation(fields: [guestId], references: [id])
-  room  Room  @relation(fields: [roomId], references: [id])
+  guest guest @relation(fields: [guestId], references: [id])
+  room  room  @relation(fields: [roomId], references: [id])
 }
 
-model Payment {
+model payment {
   id        Int      @id @default(autoincrement())
   bookingId Int
   amount    Int
   date      DateTime
 
-  booking Booking @relation(fields: [bookingId], references: [id])
+  booking booking @relation(fields: [bookingId], references: [id])
 }
 
-model Cleaning {
+model cleaning {
   id         Int      @id @default(autoincrement())
   roomId     Int
   employeeId Int
   date       DateTime
   status     String
 
-  room     Room     @relation(fields: [roomId], references: [id])
-  employee Employee @relation(fields: [employeeId], references: [id])
+  room     room     @relation(fields: [roomId], references: [id])
+  employee employee @relation(fields: [employeeId], references: [id])
 }

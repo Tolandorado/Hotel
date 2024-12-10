@@ -1,0 +1,1 @@
+\copy Room (floor, number, category) FROM 'C:/Program Files/PostgreSQL/17/data/base/room.csv' DELIMITER ';' CSV HEADER;
