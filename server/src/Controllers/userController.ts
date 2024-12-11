@@ -16,11 +16,11 @@ export const getUserByName = async (
             }
         });
         if (!user) {
-            res.status(404).json({ message: `пользователя с именем ${name} не существует, либо не верный пароль` })
+            res.status(404).json({ message: `пользователя с именем ${name} не существует` })
         }
         res.json(user)
     } catch (error: any) {
-        res.status(500).json({ message: `Error retirieving projebookingcbookingts/Ошибка при получении проектов ${error.message}` })
+        res.status(500).json({ message: `Нет такого пользователя ${error.message}` })
     }
 }
 

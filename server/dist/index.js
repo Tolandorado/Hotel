@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 app.use("/booking", bookingRoute_1.default);
 app.use("/user", userRoute_1.default);
 /* Server */
-const port = Number(process.env.SERVER_PORT) || 3000;
+const port = Number(process.env.PORT) || 3000;
 app.listen(port, "0.0.0.0", () => {
     console.log(`Server is running on part ${port}`);
 });
