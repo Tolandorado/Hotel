@@ -21,8 +21,8 @@ const submitForm = async () => {
 </script>
 
 <template>
-  <div>
-    <form @submit.prevent="submitForm">
+  <div class="flex flex-col items-center justify-center h-full w-full">
+    <form @submit.prevent="submitForm" class="bg-slate-300 w-min p-3 border rounded-md ">
       <div>
         <label for="name">Username:</label>
         <input type="text" id="name" v-model="name" required />
@@ -33,7 +33,7 @@ const submitForm = async () => {
         <input type="password" id="password" v-model="password" required />
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" class="mt-2 px-4 py-2 bg-yellow-500 rounded-md">Submit</button>
     </form>
 
     <span>{{ name }}</span>
@@ -46,21 +46,5 @@ const submitForm = async () => {
 </template>
 
 <style scoped>
-form {
-  display: flex;
-  flex-direction: column;
-}
 
-label {
-  margin-top: 10px;
-}
-
-input {
-  margin-bottom: 10px;
-}
-
-button {
-  margin-top: 10px;
-  width: 5rem;
-}
 </style>
