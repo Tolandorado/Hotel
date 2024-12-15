@@ -1,9 +1,8 @@
 <script setup>
-import Form from '@/components/Form.vue'
 </script>
 
 <template>
   <main>
-    <Form />
+    This is HOME page
   </main>
 </template>

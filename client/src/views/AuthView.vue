@@ -1,6 +1,5 @@
 <script setup>
 import { reactive, ref } from 'vue'
-import axios from 'axios'
 import { useStore } from 'vuex';
 
 const name = ref('')
@@ -14,7 +13,6 @@ const store = useStore();
 const submitForm = async () => {
   try {
     await store.dispatch('user/login', { name: name.value, password: password.value })
-    console.log(name.value)
   } catch (error) {
     throw error
   }

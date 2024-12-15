@@ -22,9 +22,11 @@ const getUserByName = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             }
         });
         if (!user) {
-            res.status(404).json({ message: `пользователя с именем ${name} не существует` });
+            res.status(201).json({ message: `пользователя с именем ${name} не существует` });
         }
-        res.json(user);
+        else {
+            res.json(user);
+        }
     }
     catch (error) {
         res.status(500).json({ message: `Нет такого пользователя ${error.message}` });

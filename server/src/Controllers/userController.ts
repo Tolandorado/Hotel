@@ -16,9 +16,9 @@ export const getUserByName = async (
             }
         });
         if (!user) {
-            res.status(404).json({ message: `пользователя с именем ${name} не существует` })
-        }
-        res.json(user)
+            res.status(201).json({ message: `пользователя с именем ${name} не существует` })
+        } else {
+        res.json(user)}
     } catch (error: any) {
         res.status(500).json({ message: `Нет такого пользователя ${error.message}` })
     }

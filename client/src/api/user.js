@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export const loginUser  = async (name, password) => {
   try {
     const response = await axios.post(`http://localhost:8000/user/login`, {
@@ -13,3 +12,5 @@ export const loginUser  = async (name, password) => {
     throw error
   }
 };
+
+
